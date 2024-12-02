@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+
 from pathlib import Path
 import os 
 import django_heroku
@@ -23,15 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-2svtxvapd^7pa_f4#s2wvbrf*9s6828=ns7u_xj8_4(z30$%0q'
-WHITENOISE_AUTOREFRESH = True
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 # ALLOWED_HOSTS = []
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 # Application definition
-
+STATIC_URL = '/static/'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -118,26 +118,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-ADMINS = [('eee', 'extrimer31@yandex.ru'),]
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# MIDDLEWARE = [
-#     'whitenoise.middleware.WhiteNoiseMiddleware', # add this
-# ]
 
 # Add your paths for static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # add this
-
-# django_heroku.settings(locals()) # add this
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
