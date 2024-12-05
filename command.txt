@@ -1,0 +1,7 @@
+python manage.py shell -  локальный терминал
+from blog.models import Post - импортируем модель Post из blog.models
+Post.objects.all() - Это список записей, с которыми мы работали до этого
+Post.objects.create(author=me, title='Sample title', text='Test') - Создать объект Post в базе данных можно следующим образом
+from django.contrib.auth.models import User
+User.objects.all()
+me = User.objects.get(username='ola')
